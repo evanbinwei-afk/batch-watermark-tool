@@ -24,10 +24,10 @@ jobs:
       - name: Syntax check
         run: python -m py_compile app.py
       - name: Build EXE
-        run: pyinstaller --noconfirm --clean --onefile --windowed --name BatchWatermarkToolProV3 app.py
+        run: pyinstaller --noconfirm --clean --onefile --windowed --name BatchWatermarkToolProV4 app.py
       - name: Upload Windows EXE
         uses: actions/upload-artifact@v4
         with:
-          name: BatchWatermarkToolProV3-Windows
-          path: dist/BatchWatermarkToolProV3.exe
+          name: BatchWatermarkToolProV4-Windows
+          path: dist/BatchWatermarkToolProV4.exe
           if-no-files-found: error
