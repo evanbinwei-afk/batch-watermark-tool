@@ -22,12 +22,15 @@ jobs:
           pip install -r requirements.txt
           pip install pyinstaller
       - name: Syntax check
-        run: python -m py_compile app.py
+        run: |
+          python -m py_compile app.py
+          python -m py_compile enhancements.py
+          python -m py_compile launcher.py
       - name: Build EXE
-        run: pyinstaller --noconfirm --clean --onefile --windowed --name BatchWatermarkToolProV4 app.py
+        run: pyinstaller --noconfirm --clean --onefile --windowed --collect-all tkinterdnd2 --name BatchWatermarkToolProV4_1 launcher.py
       - name: Upload Windows EXE
         uses: actions/upload-artifact@v4
         with:
-          name: BatchWatermarkToolProV4-Windows
-          path: dist/BatchWatermarkToolProV4.exe
+          name: BatchWatermarkToolProV4_1-Windows
+          path: dist/BatchWatermarkToolProV4_1.exe
           if-no-files-found: error
